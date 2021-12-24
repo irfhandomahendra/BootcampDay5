@@ -31,6 +31,9 @@ namespace BootcampDay5
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("LocalConnection")));
 
+            services.AddScoped<IAuthor, AuthorDAL>();
+            services.AddScoped<ICourse, CourseDAL>();
+
             services.AddControllers().AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling =
             Newtonsoft.Json.ReferenceLoopHandling.Ignore)

@@ -56,7 +56,7 @@ namespace BootcampDay5.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorId")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -80,7 +80,9 @@ namespace BootcampDay5.Migrations
                 {
                     b.HasOne("BootcampDay5.Models.Author", "Author")
                         .WithMany("Course")
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Author");
                 });

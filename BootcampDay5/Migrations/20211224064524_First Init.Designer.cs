@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BootcampDay5.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211224022553_First Init")]
+    [Migration("20211224064524_First Init")]
     partial class FirstInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,7 +58,7 @@ namespace BootcampDay5.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorId")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -82,7 +82,9 @@ namespace BootcampDay5.Migrations
                 {
                     b.HasOne("BootcampDay5.Models.Author", "Author")
                         .WithMany("Course")
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Author");
                 });

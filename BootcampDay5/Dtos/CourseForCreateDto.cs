@@ -1,18 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace BootcampDay5.Models
+namespace BootcampDay5.Dtos
 {
-    public class Course
+    public class CourseForCreateDto
     {
-        public int Id { get; set; }
         [Required]
         [MaxLength(100)]
         public string Title { get; set; }
         [Required]
         [MaxLength(500)]
         public string Description { get; set; }
-
+        [Required]
         public int AuthorId { get; set; }
-        public Author Author { get; set; }
     }
 }

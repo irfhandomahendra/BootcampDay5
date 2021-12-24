@@ -7,7 +7,7 @@ namespace BootcampDay5.Data
     {
         Task<IEnumerable<T>> GetAll();
         Task<T> GetById(string id);
-        Task<T> GetByName(string id);
+        Task<IEnumerable<T>> GetByName(string name);
         Task<T> Insert(T obj);
         Task<T> Update(string id, T obj);
         Task Delete(string id);
